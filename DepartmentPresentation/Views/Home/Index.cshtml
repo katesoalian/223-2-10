@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Студенти</h1>
+<table class="my_table">
+    <tr>
+        <th>Ім'я</th>
+        <th>Прізвище</th>
+        <th>Група</th>
+    </tr>
+    @for (var i = 0; i < @ViewBag.Students.Count; i++)
+    {
+        <tr>
+            <td>@ViewBag.Students[i].FirstName</td>
+            <td>@ViewBag.Students[i].LastName</td>
+            <td>@ViewBag.Students[i].Group.Name</td>
+        </tr>        
+    }
+</table>
+
+<h1>Викладачі</h1>
+<table class="my_table">
+    <tr>
+        <th>Ім'я</th>
+        <th>Прізвище</th>
+        <th>Предмет</th>
+    </tr>
+    @for (var i = 0; i < @ViewBag.Professors.Count; i++)
+    {
+        <tr>
+            <td>@ViewBag.Professors[i].FirstName</td>
+            <td>@ViewBag.Professors[i].LastName</td>
+            <td>@ViewBag.Professors[i].Subject</td>
+        </tr>        
+    }
+</table>
+
+<h1>Групи</h1>
+<table class="my_table">
+    <tr>
+        <th>Назва</th>
+        <th>Курс</th>
+        <th>Викладач</th>
+        <th>Кількість студентів</th>
+    </tr>
+    @for (var i = 0; i < @ViewBag.Groups.Count; i++)
+    {
+        <tr>
+            <td>@ViewBag.Groups[i].Name</td>
+            <td>@ViewBag.Groups[i].Course</td>
+            <td>@ViewBag.Groups[i].Professor.FirstName @ViewBag.Groups[i].Professor.LastName</td>
+            <td>@ViewBag.Groups[i].Students.Count</td>
+        </tr>        
+    }
+</table>

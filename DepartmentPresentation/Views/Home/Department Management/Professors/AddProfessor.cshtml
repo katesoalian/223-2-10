@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="~/Professor/AddProfessor">
+    <div>
+        <input type="text" placeholder="Ім'я: " name="FirstName" required>
+
+        <input type="text" placeholder="Прізвище: " name="LastName" required>
+
+        <input type="text" placeholder="Предмет: " name="Subject" required>
+    </div>
+    <button type="submit" class="button">Додати викладача</button>
+</form>

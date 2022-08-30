@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="~/Group/AddGroup">
+    <div>
+        <input type="number" placeholder="Назва: " name="Name" required>
+        <input type="number" placeholder="Курс: " name="Course" required>
+
+        <div class="select" tabindex="1">
+            @for (var i = 0; i < @ViewBag.Professors.Count; i++)
+            {
+                <input class="selectopt" name="ProfessorId" type="radio" id="professor{@i}" value="@ViewBag.Professors[i].Id" checked>
+                <label for="professor{@i}" class="option">@ViewBag.Professors[i].LastName @ViewBag.Professors[i].FirstName</label>
+            }
+        </did>        
+    </div>
+    <button type="submit" class="button">Додати</button>
+</form>

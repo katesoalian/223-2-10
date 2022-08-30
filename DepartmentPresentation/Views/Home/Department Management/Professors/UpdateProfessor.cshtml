@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="~/Professor/UpdateProfessor">
+    <div>
+        <input type="hidden" name="Id" value="@ViewBag.Professor.Id"/>
+        <input type="text" placeholder="Ім'я: " name="FirstName" value="@ViewBag.Professor.FirstName" required>
+
+        <input type="text" placeholder="Прізвище: " name="LastName" value="@ViewBag.Professor.LastName" required>
+
+        <input type="text" placeholder="Предмет: " name="Subject" value="@ViewBag.Professor.Subject" required>
+    </div>
+    <button type="submit" class="button">Оновити</button>
+</form>

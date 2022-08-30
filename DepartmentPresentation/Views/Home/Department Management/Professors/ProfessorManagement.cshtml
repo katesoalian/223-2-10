@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Professor management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a class="text-light btn btn-info addbtn-position" asp-controller="Professor" asp-action="AddProfessor">Додати викладача</a>
+
+<form asp-action="FindProfessor" method="get">
+    <input name="search" type="text">
+
+    <button type="submit" class="button">Пошук</button>
+
+</form>
+
+<table class="my_table">
+    <tr>
+        <th>Ім'я</th>
+        <th>Прізвище</th>
+        <th>Предмет</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @for (var i = 0; i < @ViewBag.Professors.Count; i++)
+    {
+        <tr>
+            <td>@ViewBag.Professors[i].FirstName</td>
+            <td>@ViewBag.Professors[i].LastName</td>
+            <td>@ViewBag.Professors[i].Subject</td>
+
+            @if (ViewBag.Professors[i].Groups.Count == 0)
+            {
+                <td>
+                    <form asp-action="DeleteProfessor" method="post">
+                        <input type="hidden" name="id" value="@ViewBag.Professors[i].Id"/>
+                        <button type="submit" class="text-light btn btn-info">Видалити</button>
+                    </form>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <p>Назначте інших викладачів групам, що веде цей викладач</p>
+                </td>
+            }
+            
+            <td>
+                <form asp-action="UpdateProfessor" method="get">
+                    <input type="hidden" name="id" value="@ViewBag.Professors[i].Id"/>
+                    <button type="submit" class="text-light btn btn-info">Оновити</button>
+                </form>
+            </td>
+        </tr>        
+    }
+</table>

@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+
+<form method="post" action="~/Home/Registration">
+    <div>
+        <label for="firstName">Ім'я:</label>
+        <input type="text" placeholder="Введіть ім'я:" name="FirstName" required>
+
+        <label for="lastName">Прізвище:</label>
+        <input type="text" placeholder="Введіть прізвище:" name="LastName" required>
+
+        <label for="email">Предмет:</label>
+        <input type="text" placeholder="Предмет, що ви викладаєте:" name="Subject" required>
+
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter email" name="Login" required>
+
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Enter password" name="Password" required>
+    </div>
+    <button type="submit" class="button">Register</button>
+</form>

@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Student management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a class="text-light btn btn-info addbtn-position" asp-controller="Student" asp-action="AddStudent">Додати студента</a>
+
+<form asp-action="FindStudent" method="get">
+    <input name="search" type="text">
+    <button type="submit" class="button">Пошук</button>
+</form>
+
+<table class="my_table">
+    <tr>
+        <th>Ім'я</th>
+        <th>Прізвище</th>
+        <th>Група</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @for (var i = 0; i < @ViewBag.Students.Count; i++)
+    {
+        <tr>
+            <td>@ViewBag.Students[i].FirstName</td>
+            <td>@ViewBag.Students[i].LastName</td>
+            <td>@ViewBag.Students[i].Group.Name</td>
+
+            <td>
+                <form asp-action="DeleteStudent" method="post">
+                    <input type="hidden" name="id" value="@ViewBag.Students[i].Id"/>
+                    <button type="submit" class="text-light btn btn-info">Видалити</button>
+                </form>
+            </td>
+            
+            <td>
+                <form asp-action="UpdateStudent" method="get">
+                    <input type="hidden" name="id" value="@ViewBag.Students[i].Id"/>
+                    <button type="submit" class="text-light btn btn-info">Оновити</button>
+                </form>
+            </td>
+
+            <td>
+                <form asp-action="JournalStudent" method="get">
+                    <input type="hidden" name="id" value="@ViewBag.Students[i].Id"/>
+                    <button type="submit" class="text-light btn btn-info">Журнал студента</button>
+                </form>
+            </td>
+        </tr>    
+    }
+</table>
